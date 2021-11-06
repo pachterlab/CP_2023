@@ -60,3 +60,8 @@ writeMM(d, '~/Desktop/umapPBMC.mtx')
 
 write.csv(immune.combined$stim, file='~/Desktop/stimLabsPBMC.csv')
 
+#Get original matrix
+DefaultAssay(immune.combined) <- "RNA"
+subOrig = GetAssayData(immune.combined,slot = "data")[features,]
+writeMM(subOrig, '~/Desktop/logPBMCOrig.mtx')  #4274314
+
