@@ -7,7 +7,7 @@ import itertools
 import umap
 from sklearn.decomposition import TruncatedSVD
 from sklearn.manifold import TSNE
-from MCML import MCML
+
 import densne
 import pandas as pd
 #Centroids of clusters/labels
@@ -336,96 +336,9 @@ def visComp(scaled_mat, ndims=2, pcs=50, rounds = 5):
 
 	return latents,latentLab,latentType
 
-def visCompAll(scaled_mat, ndims=2, pcs=50, rounds = 5):
-	""" Compute latent space representations usually used for visualization
-	scaled_mat : Numpy array of latent space (n_obs x n_latent)
-	ndims : No. of dimensions to reduce scaled_mat to
-	pcs : No. of PCs to use
-	rounds : No. of rounds to replicate over
-	Returns:
-	latents : List containing each generated latent space
-	latentLab : List containing label for each latent space
-	latentType : List containing broad category label for each latent space
-	"""
-	latents = []
-	latentLab = []
-	latentType = []
-
-	nanLabs = np.array([[np.nan]*scaled_mat.shape[0]])
-
-	for i in range(rounds):
-		reducer = umap.UMAP(n_components = ndims) # random_state = state
-		densUMAP = umap.UMAP(n_components = ndims,densmap=True)
-		tsne = TSNE(n_components = ndims) 
-
-		tsvd = TruncatedSVD(n_components=pcs)
-		x_pca = tsvd.fit_transform(scaled_mat)
-
-		tsvd = TruncatedSVD(n_components=2)
-		x_pca_2d = tsvd.fit_transform(scaled_mat)
-
-		pcaUMAP = reducer.fit_transform(x_pca)
-		pcaDensUMAP = densUMAP.fit_transform(x_pca)
-
-		pcaTSNE = tsne.fit_transform(x_pca)
-		pcaDensTSNE, ro ,re = densne.run_densne(x_pca,no_dims = ndims) # randseed = state
-
-		#MCML runs
-		ncaR = MCML(n_latent = pcs, epochs = 100)
-
-		lossesR, latentR = ncaR.fit(scaled_mat,nanLabs,fracNCA = 0, silent = True,ret_loss = True)
-
-		latentRUMAP = reducer.fit_transform(latentR)
-
-		latentRTSNE = tsne.fit_transform(latentR)
-
-		latentRDensUMAP = densUMAP.fit_transform(latentR)
-
-		latentRDensTSNE, ro ,re = densne.run_densne(latentR, no_dims = ndims)
-
-		latents += [latentR, x_pca, x_pca_2d, latentRTSNE, pcaTSNE, latentRUMAP, pcaUMAP,latentRDensTSNE, pcaDensTSNE, latentRDensUMAP, pcaDensUMAP ]
-		latentLab += ['Recon MCML 50D','PCA 50D','PCA 2D','Recon MCML TSNE','PCA TSNE','Recon MCML UMAP','PCA UMAP','Recon MCML denSNE','PCA densSNE','Recon MCML densMAP','PCA densMAP']
-		latentType += ['50D','50D','2D','2D','2D','2D','2D','dens 2D','dens 2D','dens 2D','dens 2D']
-
-	return latents,latentLab,latentType
 
 
-def reconComp(scaled_mat, ndims=2, pcs=50, rounds = 3):
-	""" Compute latent space representations as baseline for reconstruction abilities
-	scaled_mat : Numpy array of latent space (n_obs x n_latent)
-	ndims : No. of dimensions to reduce scaled_mat to
-	pcs : No. of PCs to use
-	rounds : No. of rounds to replicate over
-	Returns:
-	latents : List containing each generated latent space
-	latentLab : List containing label for each latent space
-	latentType : List containing broad category label for each latent space
-	"""
 
-	latents = []
-	latentLab = []
-	latentType = []
-
-	nanLabs = np.array([[np.nan]*scaled_mat.shape[0]])
-
-	for i in range(rounds):
-		tsvd = TruncatedSVD(n_components=pcs)
-		x_pca = tsvd.fit_transform(scaled_mat)
-
-		tsvd = TruncatedSVD(n_components=2)
-		x_pca_2d = tsvd.fit_transform(scaled_mat)
-
-
-		#MCML runs
-		ncaR = MCML(n_latent = pcs, epochs = 100)
-
-		lossesR, latentR = ncaR.fit(scaled_mat,nanLabs,fracNCA = 0, silent = True,ret_loss = True)
-
-		latents += [latentR, x_pca, x_pca_2d]
-		latentLab += ['Recon MCML 50D','PCA 50D','PCA 2D']
-		latentType += ['50D','50D','2D']
-
-	return latents,latentLab,latentType
 
 
 
