@@ -18,7 +18,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 ## Notebooks Directory Contents
 
 1) **notebooks**
-  - Quantitative disotortion/Picasso analysis notebooks from which Figures were generated for each dataset used.
+  - Quantitative distortion/Picasso analysis notebooks from which Figures were generated for each dataset used.
 
 2) **scripts** 
   - Python scripts for Picasso algorithm and visualization functions.
