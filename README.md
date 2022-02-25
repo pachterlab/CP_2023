@@ -1,4 +1,4 @@
-# CP_2022
+# Distortion of Single-Cell Data in Two-Dimensional Embeddings
 
 Notebooks for reproducing all 2D distortion/Picasso figures and analysis of single-cell datasets.
 
@@ -19,6 +19,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 
 1) **notebooks**
   - Quantitative distortion/Picasso analysis notebooks from which Figures were generated for each dataset used.
+  - Folders designate the metrics under analysis
 
 2) **scripts** 
   - Python scripts for Picasso algorithm and visualization functions.
