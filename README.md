@@ -18,8 +18,26 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 ## Notebooks Directory Contents
 
 1) **notebooks**
-  - Quantitative distortion/Picasso analysis notebooks from which Figures were generated for each dataset used.
-  - Folders designate the metrics under analysis
+  Quantitative distortion/Picasso analysis notebooks from which Figures were generated for each dataset used.
+  
+    - DataDownloadsAndPreprocessing: <i>Code downloaded and pre-processing data matrices</i>
+
+    - equidAnalysis: <i>Code for all equidistant cell analysis and visualizations</i>
+
+    - fig1a_b: <i>Code for Fig. 1a,b</i>
+
+    - fig1c_d: <i>Code for Fig. 1c,d</i>
+
+    - fig1e_h: <i>Code for Fig. 1e,h</i>
+
+    - jaccardDistort: <i>Code for Jaccard distance calculations across datasets (including Picasso embeddings)</i>
+
+    - picassoAnalysis: <i>All inter- and intra- distance correlation analyses for Picasso embeddings</i>
+
+    - suppCellRankAnalysis: <i>All analysis for (supplemental) cell type neighbor ranking analysis and MNIST analysis</i>
+
+    - umapTransformAnalysis: <i>Code for UMAP transformation on unseen data</i>
+
 
 2) **scripts** 
   - Python scripts for Picasso algorithm and visualization functions.
