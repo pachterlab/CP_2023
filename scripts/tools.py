@@ -11,7 +11,7 @@ from sklearn.manifold import TSNE
 import densne
 import pandas as pd
 #Centroids of clusters/labels
-def getCentroidDists(embed,clusType):
+def getCentroidDists(embed,clusType,m='l1'):
 	""" Compute inter-distances for a set of labels
 	embed : Numpy array for latent space (n_obs x n_features or n_latent)
 	clusType : List of labels for a class
@@ -29,12 +29,12 @@ def getCentroidDists(embed,clusType):
 
 		centroids[i,:] = list(centroid)
 
-	dists = pairwise_distances(centroids,centroids,metric='l1')
+	dists = pairwise_distances(centroids,centroids,metric=m)
 
 	return dists.flatten().tolist()
 
 #Get distances to centroids of clusters/labels
-def getCentroidDists_oneVsAll(embed,clusType,clus):
+def getCentroidDists_oneVsAll(embed,clusType,clus,m='l1'):
 	""" Compute inter-distances for one label versus the remaining
 	embed : Numpy array for latent space (n_obs x n_features or n_latent)
 	clusType : List of labels for a class
@@ -56,12 +56,12 @@ def getCentroidDists_oneVsAll(embed,clusType,clus):
 
 		centroids[i,:] = list(centroid)
 
-	dists = pairwise_distances(comp_centroid.reshape(1, -1),centroids,metric='l1')
+	dists = pairwise_distances(comp_centroid.reshape(1, -1),centroids,metric=m)
 
 	return dists.flatten().tolist()
 
 #Pairwise distances between binary labels
-def getPairwise(embed,clusType):
+def getPairwise(embed,clusType,m='l1'):
 	""" Compute inter-distances for binary label
 	embed : Numpy array for latent space (n_obs x n_features or n_latent)
 	clusType : List of labels for a class, where only two unique labels possible
@@ -74,12 +74,12 @@ def getPairwise(embed,clusType):
 	sub1 = embed[clusType == clusters[0],:]
 	sub2 = embed[clusType == clusters[1],:]
 
-	dists = pairwise_distances(sub1,sub2,metric='l1')
+	dists = pairwise_distances(sub1,sub2,metric=m)
 	dists = dists.flatten().tolist()
 
 	return dists
 
-def getIntraVar(embed, outLab, inLab):
+def getIntraVar(embed, outLab, inLab,m='l1'):
 	""" Compute intra-distances for inner label
 	embed : Numpy array for latent space (n_obs x n_features or n_latent)
 	outLab : 1D array for outer label (e.g. cell type)
@@ -102,7 +102,7 @@ def getIntraVar(embed, outLab, inLab):
 			sub_i = sub[sub_ins == j,:]
 			if sub_i.shape[0] > 1:
 				
-				d = pairwise_distances(sub_i,sub_i,metric='l1')
+				d = pairwise_distances(sub_i,sub_i,metric=m)
 				np.fill_diagonal(d, np.nan)
 				d = d[~np.isnan(d)].reshape(d.shape[0], d.shape[1] - 1)
 
@@ -112,7 +112,7 @@ def getIntraVar(embed, outLab, inLab):
 
 	return avg_dists
 
-def getInterVar(embed, outLab, inLab):
+def getInterVar(embed, outLab, inLab, m='l1'):
 	""" Compute inter-distances for inner label
 	embed : Numpy array for latent space (n_obs x n_features or n_latent)
 	outLab : 1D array for outer label (e.g. cell type)
@@ -136,7 +136,7 @@ def getInterVar(embed, outLab, inLab):
 
 			sub_1 = sub[sub_ins == p[0],:]
 			sub_2 = sub[sub_ins == p[1],:]
-			avg_dists += [np.mean(pairwise_distances(sub_1,sub_2,metric='l1').flatten().tolist())]
+			avg_dists += [np.mean(pairwise_distances(sub_1,sub_2,metric=m).flatten().tolist())]
 
 
 
