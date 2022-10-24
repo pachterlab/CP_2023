@@ -7,7 +7,7 @@ import itertools
 import umap
 from sklearn.decomposition import TruncatedSVD
 from sklearn.manifold import TSNE
-
+from MCML import MCML
 import densne
 import pandas as pd
 #Centroids of clusters/labels
@@ -256,7 +256,7 @@ def knn_infer(embd_space, labeled_idx, labeled_lab, unlabeled_idx,n_neighbors=10
 
 
 
-	knn = KNeighborsClassifier(n_neighbors=10)
+	knn = KNeighborsClassifier(n_neighbors=n_neighbors)
 	knn.fit(labeled_samp, labeled_lab)
 
 	pred_lab = knn.predict(unlabeled_samp)
@@ -337,7 +337,54 @@ def visComp(scaled_mat, ndims=2, pcs=50, rounds = 5):
 	return latents,latentLab,latentType
 
 
+def reconComp(scaled_mat, ndims=2, pcs=50, rounds = 3):
+	""" Compute latent space representations as baseline for reconstruction abilities
+	scaled_mat : Numpy array of latent space (n_obs x n_latent)
+	ndims : No. of dimensions to reduce scaled_mat to
+	pcs : No. of PCs to use
+	rounds : No. of rounds to replicate over
+	Returns:
+	latents : List containing each generated latent space
+	latentLab : List containing label for each latent space
+	latentType : List containing broad category label for each latent space
+	"""
 
+	latents = []
+	latentLab = []
+	latentType = []
+
+	nanLabs = np.array([[np.nan]*scaled_mat.shape[0]])
+
+	for i in range(rounds):
+		tsvd = TruncatedSVD(n_components=pcs)
+		x_pca = tsvd.fit_transform(scaled_mat)
+
+		tsvd = TruncatedSVD(n_components=2)
+		x_pca_2d = tsvd.fit_transform(scaled_mat)
+
+		tsne = TSNE(n_components = pcs) 
+		pcaTSNE = tsne.fit_transform(scaled_mat)
+
+		reducer = umap.UMAP(n_components = pcs)
+		pcaUMAP = reducer.fit_transform(scaled_mat)
+
+
+		densUMAP = umap.UMAP(n_components = pcs,densmap=True)
+		pcaDensUMAP = densUMAP.fit_transform(scaled_mat)
+
+		pcaDensTSNE, ro ,re = densne.run_densne(scaled_mat,no_dims = pcs)
+
+
+		#MCML runs
+		ncaR = MCML(n_latent = pcs, epochs = 100)
+
+		lossesR, latentR = ncaR.fit(scaled_mat,nanLabs,fracNCA = 0, silent = True,ret_loss = True)
+
+		latents += [latentR, x_pca, x_pca_2d, pcaDensUMAP,pcaDensTSNE,pcaTSNE,pcaUMAP ]
+		latentLab += ['Recon MCML 50D','PCA 50D','PCA 2D','densSNE 50D','densMap 50D','TSNE 50D','UMAP 50D']
+		latentType += ['50D','50D','2D','50D','50D','50D','50D']
+
+	return latents,latentLab,latentType
 
 
 
