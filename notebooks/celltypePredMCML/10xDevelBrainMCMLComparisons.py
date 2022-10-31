@@ -3,58 +3,58 @@ import requests
 import os
 import sys 
 
-#La Manno et al. 2020, Developing Mouse Brain data
-from tqdm import tnrange, tqdm_notebook
-def download_file(doi,ext):
-	url = 'https://api.datacite.org/dois/'+doi+'/media'
-	r = requests.get(url).json()
-	netcdf_url = r['data'][0]['attributes']['url']
-	r = requests.get(netcdf_url,stream=True)
-	#Set file name
-	fname = doi.split('/')[-1]+ext
-	#Download file with progress bar
-	if r.status_code == 403:
-		print("File Unavailable")
-	if 'content-length' not in r.headers:
-		print("Did not get file")
-	else:
-		with open(fname, 'wb') as f:
-			total_length = int(r.headers.get('content-length'))
-			pbar = tnrange(int(total_length/1024), unit="B")
-			for chunk in r.iter_content(chunk_size=1024):
-				if chunk:
-					pbar.update()
-					f.write(chunk)
-		return fname
+# #La Manno et al. 2020, Developing Mouse Brain data
+# from tqdm import tnrange, tqdm_notebook
+# def download_file(doi,ext):
+# 	url = 'https://api.datacite.org/dois/'+doi+'/media'
+# 	r = requests.get(url).json()
+# 	netcdf_url = r['data'][0]['attributes']['url']
+# 	r = requests.get(netcdf_url,stream=True)
+# 	#Set file name
+# 	fname = doi.split('/')[-1]+ext
+# 	#Download file with progress bar
+# 	if r.status_code == 403:
+# 		print("File Unavailable")
+# 	if 'content-length' not in r.headers:
+# 		print("Did not get file")
+# 	else:
+# 		with open(fname, 'wb') as f:
+# 			total_length = int(r.headers.get('content-length'))
+# 			pbar = tnrange(int(total_length/1024), unit="B")
+# 			for chunk in r.iter_content(chunk_size=1024):
+# 				if chunk:
+# 					pbar.update()
+# 					f.write(chunk)
+# 		return fname
 
 
-#dev_all_hvg.mtx
-download_file('10.22002/D1.2043','.gz')
+# #dev_all_hvg.mtx
+# download_file('10.22002/D1.2043','.gz')
 
-#dev_all_raw.mtx
-download_file('10.22002/D1.2044','.gz')
+# #dev_all_raw.mtx
+# download_file('10.22002/D1.2044','.gz')
 
-#lamannometadata.csv
-download_file('10.22002/D1.2045','.gz')
+# #lamannometadata.csv
+# download_file('10.22002/D1.2045','.gz')
 
-os.system("gunzip *.gz")
+# os.system("gunzip *.gz")
 
-os.system("mv D1.2043 dev_all_hvg.mtx")
-os.system("mv D1.2044 dev_all_raw.mtx")
-os.system("mv D1.2045 metadata.csv")
-
-
-os.system("pip3 install --quiet torch --no-cache-dir")
-os.system("pip3 install --quiet anndata --no-cache-dir")
-os.system("pip3 install --quiet matplotlib --no-cache-dir")
-os.system("pip3 install --quiet scikit-learn --no-cache-dir")
-os.system("pip3 install --quiet torchsummary --no-cache-dir")
-os.system("pip install --quiet scanpy==1.6.0 --no-cache-dir")
-#pip3 install --quiet umap-learn --no-cache-dir
-os.system("pip3 install --quiet scvi-tools --no-cache-dir")
+# os.system("mv D1.2043 dev_all_hvg.mtx")
+# os.system("mv D1.2044 dev_all_raw.mtx")
+# os.system("mv D1.2045 metadata.csv")
 
 
-os.system("git clone https://github.com/pachterlab/CP_2022.git")
+# os.system("pip3 install --quiet torch --no-cache-dir")
+# os.system("pip3 install --quiet anndata --no-cache-dir")
+# os.system("pip3 install --quiet matplotlib --no-cache-dir")
+# os.system("pip3 install --quiet scikit-learn --no-cache-dir")
+# os.system("pip3 install --quiet torchsummary --no-cache-dir")
+# os.system("pip install --quiet scanpy==1.6.0 --no-cache-dir")
+# #pip3 install --quiet umap-learn --no-cache-dir
+# os.system("pip3 install --quiet scvi-tools --no-cache-dir")
+
+
+# os.system("git clone https://github.com/pachterlab/CP_2022.git")
 
 #os.chdir("/content/CBP_2021/scripts")
 sys.path.append('./CP_2022/scripts/')
@@ -95,7 +95,7 @@ plt.rcParams['axes.linewidth'] = 0.1
 state = 42
 ndims = 2
 
-data_path = '../..'
+data_path = './'
 
 pcs = 50
 pcs2 = 100
