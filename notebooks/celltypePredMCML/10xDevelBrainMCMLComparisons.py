@@ -226,11 +226,11 @@ shuff_allLabs = np.array([shuff_lab1,shuff_lab2])
 
 
 #SCANVI accuracy scores
-scvi.data.setup_anndata(adata2, labels_key='ClusterName')
+scvi.model.SCANVI.setup_anndata(adata2, unlabeled_category='Unknown',labels_key='ClusterName')
 acc_score_scanvi = []
 acc_score_scanvi2 = []
 for i in range(3):
-	vae = scvi.model.SCANVI(adata2, np.nan,n_latent=n_latent)
+	vae = scvi.model.SCANVI(adata2, n_latent=n_latent)
 	vae.train(train_size = 0.7)
 	latent_scanvi = vae.get_latent_representation()
 	lab_idx = vae.train_indices
@@ -252,7 +252,7 @@ print(acc_score_scanvi2)
 
 
 # # # LDVAE accuracy scores
-scvi.data.setup_anndata(adata2, labels_key='ClusterName')
+scvi.model.LinearSCVI.setup_anndata(adata2, labels_key='ClusterName')
 acc_score = []
 acc_score2 = []
 for i in range(3):
