@@ -691,8 +691,8 @@ class bMCML(MCML):
 		# ----- Try maximizing label correlation (Pearson) between recon and X input ----- (minimize negative)
 
 		#Calculate variances for recon_batch and X_b 
-		rDists = self.getDist(recon_batch, Yout_b, Yin_b)
-		xDists = self.getDist(X_b, Yout_b, Yin_b)
+		rDists = self.getDist(recon_batch, Yout_b, Yin_b,p)
+		xDists = self.getDist(X_b, Yout_b, Yin_b,p)
 
 		vx = rDists - torch.mean(rDists)
 		vy = xDists - torch.mean(xDists)
