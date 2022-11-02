@@ -226,54 +226,54 @@ shuff_allLabs = np.array([shuff_lab1,shuff_lab2])
 
 
 #SCANVI accuracy scores
-scvi.model.SCANVI.setup_anndata(adata2, unlabeled_category='Unknown',labels_key='ClusterName')
-acc_score_scanvi = []
-acc_score_scanvi2 = []
-for i in range(3):
-	vae = scvi.model.SCANVI(adata2, n_latent=n_latent)
-	vae.train(train_size = 0.7)
-	latent_scanvi = vae.get_latent_representation()
-	lab_idx = vae.train_indices
-	print(lab_idx)
-	unlabeled_idx = []
-	for i in range(len(adata2)):
-		if i not in lab_idx:
-			unlabeled_idx.append(i)
-	preds = knn_infer(np.array(latent_scanvi), list(lab_idx), adata2.obs.ClusterName.values[lab_idx], unlabeled_idx)
-	acc = accuracy_score(adata2.obs.ClusterName.values[unlabeled_idx], preds)
-	acc_score_scanvi.append(acc)
+# scvi.model.SCANVI.setup_anndata(adata2, unlabeled_category='Unknown',labels_key='ClusterName')
+# acc_score_scanvi = []
+# acc_score_scanvi2 = []
+# for i in range(3):
+# 	vae = scvi.model.SCANVI(adata2, n_latent=n_latent)
+# 	vae.train(train_size = 0.7)
+# 	latent_scanvi = vae.get_latent_representation()
+# 	lab_idx = vae.train_indices
+# 	print(lab_idx)
+# 	unlabeled_idx = []
+# 	for i in range(len(adata2)):
+# 		if i not in lab_idx:
+# 			unlabeled_idx.append(i)
+# 	preds = knn_infer(np.array(latent_scanvi), list(lab_idx), adata2.obs.ClusterName.values[lab_idx], unlabeled_idx)
+# 	acc = accuracy_score(adata2.obs.ClusterName.values[unlabeled_idx], preds)
+# 	acc_score_scanvi.append(acc)
 
-	preds2 = knn_infer(np.array(latent_scanvi), list(lab_idx), adata2.obs.Age.values[lab_idx], unlabeled_idx)
-	acc2 = accuracy_score(adata2.obs.Age.values[unlabeled_idx], preds2)
-	acc_score_scanvi2.append(acc2)
+# 	preds2 = knn_infer(np.array(latent_scanvi), list(lab_idx), adata2.obs.Age.values[lab_idx], unlabeled_idx)
+# 	acc2 = accuracy_score(adata2.obs.Age.values[unlabeled_idx], preds2)
+# 	acc_score_scanvi2.append(acc2)
 
-print(acc_score_scanvi)
-print(acc_score_scanvi2)
+# print(acc_score_scanvi)
+# print(acc_score_scanvi2)
 
 
 # # # LDVAE accuracy scores
-scvi.model.LinearSCVI.setup_anndata(adata2, labels_key='ClusterName')
-acc_score = []
-acc_score2 = []
-for i in range(3):
-	vae = scvi.model.LinearSCVI(adata2,n_latent=n_latent)
-	vae.train(train_size = 0.7) #train_size = 0.7
-	latent_ldvae = vae.get_latent_representation()
-	lab_idx = vae.train_indices
-	unlabeled_idx = []
-	for i in range(len(adata2)):
-		if i not in lab_idx:
-			unlabeled_idx.append(i)
-	preds = knn_infer(np.array(latent_ldvae), list(lab_idx), adata2.obs.ClusterName.values[lab_idx], unlabeled_idx)
-	acc = accuracy_score(adata2.obs.ClusterName.values[unlabeled_idx], preds)
-	acc_score.append(acc)
+# scvi.model.LinearSCVI.setup_anndata(adata2, labels_key='ClusterName')
+# acc_score = []
+# acc_score2 = []
+# for i in range(3):
+# 	vae = scvi.model.LinearSCVI(adata2,n_latent=n_latent)
+# 	vae.train(train_size = 0.7) #train_size = 0.7
+# 	latent_ldvae = vae.get_latent_representation()
+# 	lab_idx = vae.train_indices
+# 	unlabeled_idx = []
+# 	for i in range(len(adata2)):
+# 		if i not in lab_idx:
+# 			unlabeled_idx.append(i)
+# 	preds = knn_infer(np.array(latent_ldvae), list(lab_idx), adata2.obs.ClusterName.values[lab_idx], unlabeled_idx)
+# 	acc = accuracy_score(adata2.obs.ClusterName.values[unlabeled_idx], preds)
+# 	acc_score.append(acc)
 
-	# preds2 = knn_infer(np.array(latent_ldvae), list(lab_idx), adata2.obs.Age.values[lab_idx], unlabeled_idx)
-	# acc2 = accuracy_score(adata2.obs.Age.values[unlabeled_idx], preds2)
-	# acc_score2.append(acc2)
+# 	# preds2 = knn_infer(np.array(latent_ldvae), list(lab_idx), adata2.obs.Age.values[lab_idx], unlabeled_idx)
+# 	# acc2 = accuracy_score(adata2.obs.Age.values[unlabeled_idx], preds2)
+# 	# acc_score2.append(acc2)
 
-print(acc_score)
-print(acc_score2)
+# print(acc_score)
+# print(acc_score2)
 
 
 
@@ -321,84 +321,84 @@ print(acc_score_2D)
 
 
 # # # Reconstruction loss only
-acc_scoreR = []
-acc_scoreR2 = []
-for i in range(3):
-	tic = time.perf_counter()
-	ncaR = MCML(n_latent = n_latent, epochs = 100)
-	labels = np.array([lab1])
-	train_inds = np.random.choice(len(scaled_mat), size = int(0.7*len(scaled_mat)),replace=False)
-	unlab_inds = [i for i in range(len(adata)) if i not in train_inds]
-	labels[:, unlab_inds] = np.nan
+# acc_scoreR = []
+# acc_scoreR2 = []
+# for i in range(3):
+# 	tic = time.perf_counter()
+# 	ncaR = MCML(n_latent = n_latent, epochs = 100)
+# 	labels = np.array([lab1])
+# 	train_inds = np.random.choice(len(scaled_mat), size = int(0.7*len(scaled_mat)),replace=False)
+# 	unlab_inds = [i for i in range(len(adata)) if i not in train_inds]
+# 	labels[:, unlab_inds] = np.nan
 		
-	lossesR, latentR = ncaR.fit(scaled_mat,nanLabs,fracNCA = 0, silent = True,ret_loss = True)
-	toc = time.perf_counter()
-	unlabeled_idx = []
-	for i in range(len(adata)):
-			if i not in train_inds:
-					unlabeled_idx.append(i)
-	preds = knn_infer(latentR, train_inds, adata.obs.ClusterName.values[train_inds], unlabeled_idx)
-	acc = accuracy_score(adata.obs.ClusterName.values[unlabeled_idx], preds)
-	acc_scoreR.append(acc)
+# 	lossesR, latentR = ncaR.fit(scaled_mat,nanLabs,fracNCA = 0, silent = True,ret_loss = True)
+# 	toc = time.perf_counter()
+# 	unlabeled_idx = []
+# 	for i in range(len(adata)):
+# 			if i not in train_inds:
+# 					unlabeled_idx.append(i)
+# 	preds = knn_infer(latentR, train_inds, adata.obs.ClusterName.values[train_inds], unlabeled_idx)
+# 	acc = accuracy_score(adata.obs.ClusterName.values[unlabeled_idx], preds)
+# 	acc_scoreR.append(acc)
 
-	# preds2 = knn_infer(latentR, train_inds, adata.obs.Age.values[train_inds], unlabeled_idx)
-	# acc2 = accuracy_score(adata.obs.Age.values[unlabeled_idx], preds2)
-	# acc_scoreR2.append(acc2)
-	print(f"nnNCA fit in {toc - tic:0.4f} seconds")
+# 	# preds2 = knn_infer(latentR, train_inds, adata.obs.Age.values[train_inds], unlabeled_idx)
+# 	# acc2 = accuracy_score(adata.obs.Age.values[unlabeled_idx], preds2)
+# 	# acc_scoreR2.append(acc2)
+# 	print(f"nnNCA fit in {toc - tic:0.4f} seconds")
 
-print(acc_scoreR)
-print(acc_scoreR2)
+# print(acc_scoreR)
+# print(acc_scoreR2)
 # # # # In[24]:
 
 
 # # NCA loss (MCML)
 
-acc_scoreBoth = []
-acc_scoreBoth2 = []
-acc_scoreBoth3 = []
+# acc_scoreBoth = []
+# acc_scoreBoth2 = []
+# acc_scoreBoth3 = []
 
-for b in [1.0]: #0.99
+# for b in [1.0]: #0.99
 
-	for i in range(3):
-		tic = time.perf_counter()
-		nca = MCML(n_latent = n_latent, epochs = 500)
-		#ncaR2 = MCML(n_latent = n_latent, epochs = 100)
+# 	for i in range(3):
+# 		tic = time.perf_counter()
+# 		nca = MCML(n_latent = n_latent, epochs = 500)
+# 		#ncaR2 = MCML(n_latent = n_latent, epochs = 100)
 
-		labels = np.array([lab1])
-		train_inds = np.random.choice(len(scaled_mat), size = int(0.7*len(scaled_mat)),replace=False)
-		unlab_inds = [i for i in range(len(adata)) if i not in train_inds]
+# 		labels = np.array([lab1])
+# 		train_inds = np.random.choice(len(scaled_mat), size = int(0.7*len(scaled_mat)),replace=False)
+# 		unlab_inds = [i for i in range(len(adata)) if i not in train_inds]
 
-		labels[:, unlab_inds] = np.nan
+# 		labels[:, unlab_inds] = np.nan
 
-		#2 labels
-		labels2 = allLabs2.copy()
-		labels2[:, unlab_inds] = np.nan
+# 		#2 labels
+# 		labels2 = allLabs2.copy()
+# 		labels2[:, unlab_inds] = np.nan
 
-		losses, latent = nca.fit(scaled_mat,labels,fracNCA = b, silent = True,ret_loss = True)
-		#losses2, latent2 = ncaR2.fit(scaled_mat,labels2,fracNCA = b, silent = True,ret_loss = True)
+# 		losses, latent = nca.fit(scaled_mat,labels,fracNCA = b, silent = True,ret_loss = True)
+# 		#losses2, latent2 = ncaR2.fit(scaled_mat,labels2,fracNCA = b, silent = True,ret_loss = True)
 			
-		toc = time.perf_counter()
-		unlabeled_idx = []
-		for i in range(len(adata)):
-				if i not in train_inds:
-						unlabeled_idx.append(i)
-		preds = knn_infer(latent, train_inds, adata.obs.ClusterName.values[train_inds], unlabeled_idx)
-		acc = accuracy_score(adata.obs.ClusterName.values[unlabeled_idx], preds)
-		acc_scoreBoth.append(acc)
+# 		toc = time.perf_counter()
+# 		unlabeled_idx = []
+# 		for i in range(len(adata)):
+# 				if i not in train_inds:
+# 						unlabeled_idx.append(i)
+# 		preds = knn_infer(latent, train_inds, adata.obs.ClusterName.values[train_inds], unlabeled_idx)
+# 		acc = accuracy_score(adata.obs.ClusterName.values[unlabeled_idx], preds)
+# 		acc_scoreBoth.append(acc)
 
 
 
-# 		# preds2 = knn_infer(latent2, train_inds, adata.obs.ClusterName.values[train_inds], unlabeled_idx)
-# 		# acc2 = accuracy_score(adata.obs.ClusterName.values[unlabeled_idx], preds2)
-# 		# acc_scoreBoth2.append(acc2)
+# # 		# preds2 = knn_infer(latent2, train_inds, adata.obs.ClusterName.values[train_inds], unlabeled_idx)
+# # 		# acc2 = accuracy_score(adata.obs.ClusterName.values[unlabeled_idx], preds2)
+# # 		# acc_scoreBoth2.append(acc2)
 
-# 		# preds2 = knn_infer(latent2, train_inds, adata.obs.Age.values[train_inds], unlabeled_idx)
-# 		# acc2 = accuracy_score(adata.obs.Age.values[unlabeled_idx], preds2)
-# 		# acc_scoreBoth3.append(acc2)
+# # 		# preds2 = knn_infer(latent2, train_inds, adata.obs.Age.values[train_inds], unlabeled_idx)
+# # 		# acc2 = accuracy_score(adata.obs.Age.values[unlabeled_idx], preds2)
+# # 		# acc_scoreBoth3.append(acc2)
 
-# 		print(f"nnNCA fit in {toc - tic:0.4f} seconds")
+# # 		print(f"nnNCA fit in {toc - tic:0.4f} seconds")
 
-print(acc_scoreBoth)
+# print(acc_scoreBoth)
 # # # print(acc_scoreBoth2)
 # # # print(acc_scoreBoth3)
 
@@ -453,10 +453,10 @@ print(acc_scorePCA2)
 #---------------- Save knn prediction accuracy scores for cell type labels ----------------
 vals = pd.DataFrame()
 
-vals['Accuracy'] = acc_score  +  acc_score_scanvi + acc_scoreR + acc_scoreBoth + acc_scorePCA  + acc_scorePCA2 + acc_score_2D #
+vals['Accuracy'] = acc_scorePCA  + acc_scorePCA2 + acc_score_2D #acc_score  +  acc_score_scanvi + acc_scoreR + acc_scoreBoth + 
 
 r = 3
-vals['Embed'] = ['LDVAE']*r + ['SCANVI']*r + ['Recon MCML']*r + ['NCA-Recon MCML']*r +['PCA 50D']*r +['PCA 100D']*r + ['PCA UMAP Sup.','PCA UMAP','PCA t-SNE']*r #  
+vals['Embed'] = ['PCA 50D']*r +['PCA 100D']*r + ['PCA UMAP Sup.','PCA UMAP','PCA t-SNE']*r #  ['LDVAE']*r + ['SCANVI']*r + ['Recon MCML']*r + ['NCA-Recon MCML']*r +
 
 
 # vals['Label'] = ['CellType1']*15 #+ ['Gender2']*12 + ['CellType2']*1 #+  ['CellType1'] #+  ['Gender2']
