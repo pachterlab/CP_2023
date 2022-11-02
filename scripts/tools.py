@@ -362,7 +362,7 @@ def reconComp(scaled_mat, ndims=2, pcs=50, rounds = 3):
 		tsvd = TruncatedSVD(n_components=2)
 		x_pca_2d = tsvd.fit_transform(scaled_mat)
 
-		tsne = TSNE(n_components = pcs) 
+		tsne = TSNE(n_components = pcs,method='exact') 
 		pcaTSNE = tsne.fit_transform(scaled_mat)
 
 		reducer = umap.UMAP(n_components = pcs)
