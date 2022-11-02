@@ -362,8 +362,8 @@ def reconComp(scaled_mat, ndims=2, pcs=50, rounds = 3):
 		tsvd = TruncatedSVD(n_components=2)
 		x_pca_2d = tsvd.fit_transform(scaled_mat)
 
-		tsne = TSNE(n_components = pcs,method='exact') 
-		pcaTSNE = tsne.fit_transform(scaled_mat)
+		# tsne = TSNE(n_components = pcs,method='exact') 
+		# pcaTSNE = tsne.fit_transform(scaled_mat)
 
 		reducer = umap.UMAP(n_components = pcs)
 		pcaUMAP = reducer.fit_transform(scaled_mat)
@@ -372,7 +372,7 @@ def reconComp(scaled_mat, ndims=2, pcs=50, rounds = 3):
 		densUMAP = umap.UMAP(n_components = pcs,densmap=True)
 		pcaDensUMAP = densUMAP.fit_transform(scaled_mat)
 
-		pcaDensTSNE, ro ,re = densne.run_densne(scaled_mat,no_dims = pcs)
+		# pcaDensTSNE, ro ,re = densne.run_densne(scaled_mat,no_dims = pcs)
 
 
 		#MCML runs
@@ -380,9 +380,9 @@ def reconComp(scaled_mat, ndims=2, pcs=50, rounds = 3):
 
 		lossesR, latentR = ncaR.fit(scaled_mat,nanLabs,fracNCA = 0, silent = True,ret_loss = True)
 
-		latents += [latentR, x_pca, x_pca_2d, pcaDensUMAP,pcaDensTSNE,pcaTSNE,pcaUMAP ]
-		latentLab += ['Recon MCML 50D','PCA 50D','PCA 2D','densSNE 50D','densMap 50D','TSNE 50D','UMAP 50D']
-		latentType += ['50D','50D','2D','50D','50D','50D','50D']
+		latents += [latentR, x_pca, x_pca_2d, pcaDensUMAP,pcaUMAP ] #pcaDensTSNE,pcaTSNE
+		latentLab += ['Recon MCML 50D','PCA 50D','PCA 2D','densMap 50D','UMAP 50D'] #'densSNE 50D'  'TSNE 50D'
+		latentType += ['50D','50D','2D','50D','50D'] #'50D','50D'
 
 	return latents,latentLab,latentType
 

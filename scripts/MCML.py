@@ -697,7 +697,7 @@ class bMCML(MCML):
 		vx = rDists - torch.mean(rDists)
 		vy = xDists - torch.mean(xDists)
 
-		recon_loss_b = -1*(torch.sum(vx * vy) / (torch.sqrt(torch.sum(vx ** 2)) * torch.sqrt(torch.sum(vy ** 2))))
+		recon_loss_b = -1*(torch.sum(vx * vy)) / (torch.sqrt(torch.sum(vx ** 2)) * torch.sqrt(torch.sum(vy ** 2)))
 
 		
 		#recon_loss_b = 
