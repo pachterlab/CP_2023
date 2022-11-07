@@ -240,11 +240,11 @@ def plotLatentStats(allVals, axisFontSize = 11, tickFontSize = 10, errwidth=1, f
 	plt.setp(g.collections, alpha=.6) #for the markers
 	plt.legend(bbox_to_anchor=(1.04,1), loc="upper left",prop={"size":10})
 
-	if (ymin not None) and (ymin not None):
+	if (ymin is not None) and (ymax is not None):
 		plt.ylim(ymin=ymin,ymax=ymax)
-	elif ymin not None:
+	elif ymin is not None:
 		plt.ylim(ymin=ymin)
-	elif ymax not None:
+	elif ymax is not None:
 		plt.ylim(ymax=ymax)
 
 	plt.xlabel("Distance Metric",fontsize=axisFontSize)
