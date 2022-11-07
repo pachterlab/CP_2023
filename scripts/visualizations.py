@@ -232,7 +232,7 @@ def plot_embed_3d(adata, label, cluster_label, fname = None, colors = []):
 	else:
 		plt.show()
 
-def plotLatentStats(allVals, axisFontSize = 11, tickFontSize = 10, errwidth=1, figsize =(8,4), dodge=0.4, fname = None, ymin = 0):
+def plotLatentStats(allVals, axisFontSize = 11, tickFontSize = 10, errwidth=1, figsize =(8,4), dodge=0.4, fname = None, ymin = 0, ymax = 1):
 	""" Plot pearsonr correlation metrics for multiple latent spaces """
 
 	plt.figure(figsize=figsize)
@@ -240,7 +240,7 @@ def plotLatentStats(allVals, axisFontSize = 11, tickFontSize = 10, errwidth=1, f
 	plt.setp(g.collections, alpha=.6) #for the markers
 	plt.legend(bbox_to_anchor=(1.04,1), loc="upper left",prop={"size":10})
 
-	plt.ylim(ymin=ymin)
+	plt.ylim(ymin=ymin,ymax=ymax)
 
 	plt.xlabel("Distance Metric",fontsize=axisFontSize)
 	plt.ylabel("Pearsonr (to Ambient)",fontsize=axisFontSize)
