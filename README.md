@@ -1,6 +1,6 @@
-# Distortion of Single-Cell Data in Two-Dimensional Embeddings
+# The Specious Art of Single-Cell Genomics
 
-Notebooks for reproducing all 2D distortion/Picasso figures and analysis of single-cell datasets.
+Notebooks for reproducing all figures and analysis of single-cell datasets for the [paper](https://www.biorxiv.org/content/10.1101/2021.08.25.457696).
 
 ## Getting Started
 
@@ -14,6 +14,8 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 
 [Github for Picasso Package](https://github.com/pachterlab/picasso): Package for running the Picasso algorithm and quantitative analysis on embeddings/matrices.
 
+[Github for MCML Package](https://github.com/pachterlab/MCML): Package for running the MCML algorithm and quantitative analysis on embeddings/matrices.
+
 
 ## Notebooks Directory Contents
 
@@ -22,41 +24,28 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
   
     - DataDownloadsAndPreprocessing: <i>Code downloaded and pre-processing data matrices</i>
     
-    - fig1a_b: <i>Code for Fig. 1a,b and corresponding Supp. Fig. 8</i>
+ 
+    - jaccardDistort: <i>Code for Jaccard distance calculations across datasets (including Picasso embeddings)</i>
 
-    - fig1c_d: <i>Code for Fig. 1c,d and corresponding Supp. Fig. 9</i>
 
-    - fig1e_g: <i>Code for Fig. 1e-g</i>
-
+    - cellRankAnalysis: <i>All analysis for cell type neighbor ranking analysis and MNIST analysis</i>
+    
+    
     - equidAnalysis: <i>Code for all equidistant cell analysis and visualizations</i>
     
-        equidistCellsVis.ipynb: <i>Supp. Fig. 1,2,4,5</i>
-        
-        allEquidistDistortions.ipynb: <i>Supp. Fig. 3,7</i>
-
-    - jaccardDistort: <i>Code for Jaccard distance calculations across datasets (including Picasso embeddings)</i>
-        
-        <i>Supp. Fig. 6</i>
-
-    - picassoAnalysis: <i>All inter- and intra- distance correlation analyses for Picasso embeddings</i>
-    
-        <i>Supp. Fig. 14,15</i>
-
-    - suppCellRankAnalysis: <i>All analysis for (supplemental) cell type neighbor ranking analysis and MNIST analysis</i>
-    
-        <i>Supp. Fig. 10,11</i>
 
     - umapTransformAnalysis: <i>Code for UMAP transformation on unseen data</i>
-    
-        merfish.ipynb: <i>Supp. Fig. 12</i>
+
           
     - swissRoll: <i>Code for Swiss roll manifold embedding analysis</i>
-    
-        <i>Supp. Fig. 16-19</i>
+
+
+    - picassoAnalysis: <i>All inter- and intra- distance correlation analyses for Picasso embeddings</i>
+
 
 
 2) **scripts** 
-  - Python scripts for Picasso algorithm and visualization functions.
+  - Python scripts for Picasso and MCML algorithms and visualization functions.
   - Python scripts for quantitative analysis of inter-/intra-distances and KNN metrics.
 
 3) **data**
