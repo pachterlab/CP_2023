@@ -22,43 +22,69 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 1) **notebooks**
   Quantitative distortion/Picasso analysis notebooks from which Figures were generated for each dataset used.
   
-    - DataDownloadsAndPreprocessing: <i>Code downloaded and pre-processing data matrices</i>
+    - DataDownloadsAndPreprocessing: 
+    
+            Code for downloading and pre-processing data matrices
     
  
-    - jaccardDistort: <i>Code for Jaccard distance calculations across datasets (including Picasso embeddings)</i>
+    - jaccardDistort: 
+    
+            Code for Jaccard distance calculations across datasets (including Picasso embeddings)
 
 
-    - cellRankAnalysis: <i>All analysis for cell type neighbor ranking analysis and MNIST analysis</i>
+    - cellRankAnalysis: 
+    
+            All analysis for cell type neighbor ranking analysis and MNIST analysis
     
     
-    - equidAnalysis: <i>Code for all equidistant cell analysis and visualizations</i>
+    - equidAnalysis: 
+    
+            Code for all equidistant cell analysis and visualizations
     
     
-    - uteroMixingAnalysis: <i>Code for all mixing analysis of the Ex/In-Utero datasets</i>
+    - uteroMixingAnalysis: 
+    
+            Code for all mixing analysis of the Ex/In-Utero datasets
     
     
-    - scanoCompMixingAnalysis: <i>Code for all mixing analysis of MNN and Scanorama integrated data</i>
+    - scanoCompMixingAnalysis: 
+    
+            Code for all mixing analysis of MNN and Scanorama integrated data
     
     
-    - umapTransformAnalysis: <i>Code for UMAP transformation on unseen data</i>
+    - umapTransformAnalysis: 
+    
+            Code for UMAP transformation on unseen data
     
     
-    - celltypePredMCML: <i>Code for cell type label prediction (including for MCML embeddings)</i>
+    - celltypePredMCML: 
+    
+            Code for cell type label prediction (including for MCML embeddings)
     
     
-    - densityAnalysis:  <i>Code for all density-based analysis</i>
+    - densityAnalysis:  
+            
+            Code for all density-based analysis
     
     
-    - trajInference: <i>Code for all trajectory analysis (Velocyto)</i>
+    - trajInference: 
+    
+            Code for all trajectory analysis (Velocyto)
 
           
-    - swissRoll: <i>Code for Swiss roll manifold embedding analysis</i>
+    - swissRoll: 
+    
+            Code for Swiss roll manifold embedding analysis
 
 
-    - picassoAnalysis: <i>All inter- and intra- distance correlation analyses for Picasso embeddings</i>
+    - picassoAnalysis: 
+    
+            All inter- and intra-distance correlation analyses for Picasso embeddings
 
     
-    - bMCML: i>All bMCML analysis</i>
+    - bMCML: 
+    
+            All bMCML analysis
 
 
 
