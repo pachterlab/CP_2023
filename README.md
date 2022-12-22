@@ -33,14 +33,32 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
     
     - equidAnalysis: <i>Code for all equidistant cell analysis and visualizations</i>
     
-
+    
+    - uteroMixingAnalysis: <i>Code for all mixing analysis of the Ex/In-Utero datasets</i>
+    
+    
+    - scanoCompMixingAnalysis: <i>Code for all mixing analysis of MNN and Scanorama integrated data</i>
+    
+    
     - umapTransformAnalysis: <i>Code for UMAP transformation on unseen data</i>
+    
+    
+    - celltypePredMCML: <i>Code for cell type label prediction (including for MCML embeddings)</i>
+    
+    
+    - densityAnalysis:  <i>Code for all density-based analysis</i>
+    
+    
+    - trajInference: <i>Code for all trajectory analysis (Velocyto)</i>
 
           
     - swissRoll: <i>Code for Swiss roll manifold embedding analysis</i>
 
 
     - picassoAnalysis: <i>All inter- and intra- distance correlation analyses for Picasso embeddings</i>
+
+    
+    - bMCML: i>All bMCML analysis</i>
 
 
 
