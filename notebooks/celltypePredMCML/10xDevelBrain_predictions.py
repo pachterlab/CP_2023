@@ -61,7 +61,7 @@ sys.path.append('./CP_2022/scripts/')
 import anndata 
 import pandas as pd
 import numpy as np
-from MCML import MCML #Now has continuous label addition
+from import MCML #Now has continuous label addition
 # import visualizations as vis
 # import tools as tl
 import random
