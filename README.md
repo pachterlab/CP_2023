@@ -1,6 +1,6 @@
 # The Specious Art of Single-Cell Genomics
 
-Notebooks for reproducing all figures and analysis of single-cell datasets for the [paper](https://www.biorxiv.org/content/10.1101/2021.08.25.457696).
+Notebooks for reproducing all figures and analysis of single-cell datasets for the "The Specious Art of Single-Cell Genomics" paper .
 
 ## Getting Started
 
@@ -20,83 +20,44 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 ## Notebooks Directory Contents
 
 1) **notebooks**
-  Quantitative distortion/Picasso analysis notebooks from which Figures were generated for each dataset used.
+  Quantitative distortion analysis notebooks from which Figures were generated for each dataset used.
+  Notebook directories listed below for the corresponding Figure plots.
   
-    - DataDownloadsAndPreprocessing: 
-    
-            Code for downloading and pre-processing data matrices
-    
- 
-    - jaccardDistort: 
-    
-            Code for Jaccard distance calculations across datasets (including Picasso embeddings)
-
-
-    - cellRankAnalysis: 
-    
-            All analysis for cell type neighbor ranking analysis and MNIST analysis
-    
-    
-    - equidAnalysis: 
-    
-            Code for all equidistant cell analysis and visualizations
-    
-    
-    - uteroMixingAnalysis: 
-    
-            Code for all mixing analysis of the Ex/In-Utero datasets
-    
-    
-    - scanoCompMixingAnalysis: 
-    
-            Code for all mixing analysis of MNN and Scanorama integrated data
-    
-    
-    - umapTransformAnalysis: 
-    
-            Code for UMAP transformation on unseen data
-    
-    
-    - celltypePredMCML: 
-    
-            Code for cell type label prediction (including for MCML embeddings)
-    
-    
-    - densityAnalysis:  
-            
-            Code for all density-based analysis
-    
-    
-    - trajInference: 
-    
-            Code for all trajectory analysis (Velocyto)
-
-          
-    - swissRoll: 
-    
-            Code for Swiss roll manifold embedding analysis
-
-
-    - picassoAnalysis: 
-    
-            All inter- and intra-distance correlation analyses for Picasso embeddings
-
-    
-    - bMCML: 
-    
-            All bMCML analysis
+    * Figure 2: `jaccardDistort_Fig2a`, `combinedFigurePlots_Figs2a_4a_7`, `cellRankAnalysis_Figs2b_4b`, `equidAnalysis_Fig2c`
+    * Figure 3: `uteroMixingAnalysis_Fig3a`, `scanoCompMixingAnalysis_Fig3b`
+    * Figure 4: `celltypePred_Fig4a`, `combinedFigurePlots_Figs2a_4a_7`, `cellRankAnalysis_Figs2b_4b`
+    * Figure 5: `densityAnalysis_Fig5`
+    * Figure 6: `trajInference_Fig6`
+    * Figure 7: `picassoAnalysis_Fig7`, `combinedFigurePlots_Figs2a_4a_7`
+    * Figure 8: `metricContrastAnalysis_Fig8`
+      
+  
+      --- Supplementary Figures ---
+    * Figure A,B: `jaccardDistort_Fig2a`
+    * Figure C-E,N-Q: `cellRankAnalysis_Figs2b_4b`
+    * Figure F-H: `equidAnalysis_Fig2c`
+    * Figure J,K: `uteroMixingAnalysis_Fig3a`, `scanoCompMixingAnalysis_Fig3b`
+    * Figure L: `umapTransformAnalysis`
+    * Figure M: `celltypePred_Fig4a`, `combinedFigurePlots_Figs2a_4a_7`
+    * Figure R,S: `densityAnalysis_Fig5`
+    * Figure T: `trajInference_Fig6`
+    * Figre U,V: `swissRoll`
+    * Figure W,X: `picassoAnalysis_Fig7`
+    * Figure Y,Z: `celltypePredMCML`
+    * Figure ZA : `bMCML`
 
 
 
-2) **scripts** 
-  - Python scripts for Picasso and MCML algorithms and visualization functions.
-  - Python scripts for quantitative analysis of inter-/intra-distances and KNN metrics.
+3) **scripts** 
+    * Python scripts for Picasso and MCML algorithms and visualization functions.
+    * Python scripts for quantitative analysis of inter-/intra-distances and KNN metrics.
+    * R script for plots of PCA of equidistant points (Figure I in Supplement)
 
 3) **data**
-  - Saved analyses outputs (csv).
+    * Saved analyses outputs (csv).
 
 4) **env**
-  - Conda environments (yml) for MACOS and Linux. Replicates Colab environment.
+    * Conda environments (yml) for MACOS and Linux. Replicates Colab environment.
 
 
 
