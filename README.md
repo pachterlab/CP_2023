@@ -1,8 +1,8 @@
+[![DOI](https://zenodo.org/badge/421983652.svg)](https://zenodo.org/badge/latestdoi/421983652)
+
 # The Specious Art of Single-Cell Genomics
 
 Notebooks for reproducing all figures and analysis of single-cell datasets for the "The Specious Art of Single-Cell Genomics" paper .
-
-![image](https://github.com/pachterlab/CP_2023/assets/17519396/07816fb2-fffd-47ae-8776-2077e1d7fa06)
 
 ## Getting Started
 
