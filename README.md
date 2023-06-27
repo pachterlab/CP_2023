@@ -4,7 +4,7 @@ Notebooks for reproducing all figures and analysis of single-cell datasets for t
 
 ## Getting Started
 
-Where possible, analysis notebooks (.ipynb) are provided that can be run from Google Colab. Colab links are included in every notebook. Just click on the [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com) symbol.
+Where possible, analysis notebooks (.ipynb) are provided that can be run from Google Colab. Colab links are included at the top of the notebook. Just click on the [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com) symbol.
 
 An intro to using Colab can be found [here](https://colab.research.google.com). Briefly, run each code cell by selecting the cell and executing Command/Ctrl+Enter. Code cells can be edited by simply clicking on the cell to start typing.
 
