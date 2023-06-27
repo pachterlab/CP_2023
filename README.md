@@ -33,7 +33,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
       
   
       --- Supplementary Figures ---
-    * Figure A,B: `jaccardDistort_Fig2a`
+    * Figure A,B: `jaccardDistort_Fig2a`, `combinedFigurePlots_Figs2a_4a_7`
     * Figure C-E,N-Q: `cellRankAnalysis_Figs2b_4b`
     * Figure F-H: `equidAnalysis_Fig2c`
     * Figure J,K: `uteroMixingAnalysis_Fig3a`, `scanoCompMixingAnalysis_Fig3b`
@@ -42,9 +42,9 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
     * Figure R,S: `densityAnalysis_Fig5`
     * Figure T: `trajInference_Fig6`
     * Figre U,V: `swissRoll`
-    * Figure W,X: `picassoAnalysis_Fig7`
-    * Figure Y,Z: `celltypePredMCML`
-    * Figure ZA : `bMCML`
+    * Figure W,X: `picassoAnalysis_Fig7`, `combinedFigurePlots_Figs2a_4a_7`
+    * Figure Y,Z: `celltypePredMCML`, `combinedFigurePlots_Figs2a_4a_7`
+    * Figure ZA : `bMCML`, `combinedFigurePlots_Figs2a_4a_7`
 
 
 
