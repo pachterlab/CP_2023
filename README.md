@@ -17,11 +17,11 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 [Github for MCML Package](https://github.com/pachterlab/MCML): Package for running the MCML algorithm and quantitative analysis on embeddings/matrices.
 
 
-## Notebooks Directory Contents
+## Repo Directory Contents
 
 1) **notebooks**
   All analysis notebooks from which Figures were generated.
-  Notebook directories listed below for the corresponding Figures.
+  Notebook sub-directories listed below for the corresponding Figures.
   
     * Figure 2: `jaccardDistort_Fig2a`, `combinedFigurePlots_Figs2a_4a_7`, `cellRankAnalysis_Figs2b_4b`, `equidAnalysis_Fig2c`
     * Figure 3: `uteroMixingAnalysis_Fig3a`, `scanoCompMixingAnalysis_Fig3b`
