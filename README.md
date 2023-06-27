@@ -20,8 +20,8 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 ## Notebooks Directory Contents
 
 1) **notebooks**
-  Quantitative distortion analysis notebooks from which Figures were generated for each dataset used.
-  Notebook directories listed below for the corresponding Figure plots.
+  All analysis notebooks from which Figures were generated.
+  Notebook directories listed below for the corresponding Figures.
   
     * Figure 2: `jaccardDistort_Fig2a`, `combinedFigurePlots_Figs2a_4a_7`, `cellRankAnalysis_Figs2b_4b`, `equidAnalysis_Fig2c`
     * Figure 3: `uteroMixingAnalysis_Fig3a`, `scanoCompMixingAnalysis_Fig3b`
