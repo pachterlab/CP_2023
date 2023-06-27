@@ -2,6 +2,8 @@
 
 Notebooks for reproducing all figures and analysis of single-cell datasets for the "The Specious Art of Single-Cell Genomics" paper .
 
+![image](https://github.com/pachterlab/CP_2023/assets/17519396/07816fb2-fffd-47ae-8776-2077e1d7fa06)
+
 ## Getting Started
 
 Where possible, analysis notebooks (.ipynb) are provided that can be run from Google Colab. Colab links are included at the top of the notebook. Just click on the [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com) symbol.
