@@ -39,7 +39,7 @@ def UMAP(adata, label, latent, ndims = 2, state = 42, metric = "euclidean", neig
 	reducer = umap.UMAP(n_neighbors = neighbors, n_components = ndims, metric = metric, random_state = state)
 	adata.obsm[label + "_umap"] = reducer.fit_transform(latent)
 
-def obj_plot_embed(latent, cluster_label, fname = None, colors = [], alpha=0.4,figsize=(7,5)):
+def obj_plot_embed(latent, cluster_label, fname = None, colors = [], alpha=0.4,figsize=(7,5), title=None):
 	""" Plot latent space in 2D and color cells by cluster_label """
 
 	fig, ax = plt.subplots(nrows = 1, ncols = 1, figsize=figsize)
@@ -63,6 +63,8 @@ def obj_plot_embed(latent, cluster_label, fname = None, colors = [], alpha=0.4,f
 		
 	ax.legend(loc='center left',bbox_to_anchor=(1, 0.5),prop={'size': 8},frameon=False,ncol=2)
 	ax.set_axis_off()
+	if title:
+		plt.title(title)
 
 	fig.tight_layout()
 	if(fname != None):
